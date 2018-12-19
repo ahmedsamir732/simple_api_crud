@@ -1,0 +1,17 @@
+{
+    "name": "ahmedsamir/simple_api_crud",
+    "description": "simple api crud",
+    "require": {
+        "doctrine/orm": "^2.6",
+        "nikic/fast-route": "^1.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.5"
+    },
+    "authors": [
+        {
+            "name": "Ahmed Samir",
+            "email": "ahmedsamir732@gmail.com"
+        }
+    ]
+}
