@@ -1,4 +1,4 @@
-web:
+webserver:
   image: nginx:latest
   ports:
     - "8080:80"
@@ -7,14 +7,22 @@ web:
     - ./nginx.conf:/etc/nginx/conf.d/default.conf
   links:
     - php
-
+    
 php:
-  build: .
+  image: php:7.2-fpm
   volumes:  
     - ./code:/code
   links:
-    - mysql  
+    - mysql
+    - composer
 
+composer:
+  image: composer:latest
+  command: install
+  working_dir: /code
+  volumes:
+    - ./code:/code
+  
 mysql:
   image: mysql:5.7
   ports:

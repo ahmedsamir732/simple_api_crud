@@ -1,4 +1,4 @@
-FROM php:7.2.13-fpm-stretch
+FROM php:7.2.13-fpm
 
 RUN docker-php-ext-install mysqli 
 
@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     libjpeg62-turbo-dev \
     libmcrypt-dev \
     libpng-dev \
-    && docker-php-ext-install iconv mcrypt \
+    && docker-php-ext-install iconv \
     && docker-php-ext-configure gd --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install gd \
     && docker-php-ext-install zip 
