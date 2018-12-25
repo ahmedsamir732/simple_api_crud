@@ -1,10 +1,10 @@
 <?php
 
 $r->addRoute('GET', '/', 'index page');
+$r->addRoute('POST', '/register', 'RegisterController@create');
+$r->addRoute('POST', '/login', 'LoginController@auth');
 $r->addRoute('GET', '/articles', 'ArticleController@index');
 $r->addRoute('GET', '/articles/{id:\d+}', 'ArticleController@show');
-// $r->addRoute('GET', '/users', 'get_all_users_handler');
-// // {id} must be a number (\d+)
-// $r->addRoute('GET', '/user/{id:\d+}', 'get_user_handler');
-// // The /{title} suffix is optional
-// $r->addRoute('GET', '/articles/{id:\d+}[/{title}]', 'get_article_handler');
+$r->addRoute('POST', '/articles/create', 'ArticleController@create');
+$r->addRoute('PUT', '/articles/update/{id:\d+}', 'ArticleController@update');
+$r->addRoute('PUT', '/articles/delete/{id:\d+}', 'ArticleController@delete');
