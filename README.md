@@ -1,6 +1,8 @@
 # simple_api_crud
 
-First of all you should run:
+#Install
+
+clone the repo, then `cd simple_api_crud`, then run:
 `docker-compose up --build`
 
 this should install the script environment for you, the php will run on port `8080`, and the phpmyadmin will run on port `8082`.
