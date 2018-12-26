@@ -1,7 +1,7 @@
 <?php
 require 'vendor/autoload.php';
 
-function dd(...$vars)
+function dd($vars)
 {
     echo '<pre>'.print_r($vars, true);die;
 }

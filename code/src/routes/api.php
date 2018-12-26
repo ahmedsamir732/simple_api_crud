@@ -6,5 +6,5 @@ $r->addRoute('POST', '/login', 'LoginController@auth');
 $r->addRoute('GET', '/articles', 'ArticleController@index');
 $r->addRoute('GET', '/articles/{id:\d+}', 'ArticleController@show');
 $r->addRoute('POST', '/articles/create', 'ArticleController@create');
-$r->addRoute('PUT', '/articles/update/{id:\d+}', 'ArticleController@update');
-$r->addRoute('PUT', '/articles/delete/{id:\d+}', 'ArticleController@delete');
+$r->addRoute('POST', '/articles/update/{id:\d+}', 'ArticleController@update');
+$r->addRoute('GET', '/articles/delete/{id:\d+}', 'ArticleController@delete');

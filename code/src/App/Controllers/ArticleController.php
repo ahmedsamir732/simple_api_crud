@@ -50,13 +50,10 @@ class ArticleController extends Controller
         $token = $this->checkAuth();
 
         try {
-            parse_str(http_build_query(file_get_contents("php://input")),$data);
-            print_r($data);die;
             if (isset($_POST['title'], $_POST['body'])) {
                 $article = Article::where('id', $id)->where('user_id', $token['id'])->first();
                 if (!$article) {
                     throw new \Exception("article not found", 1);
-                    
                 }
 
                 $article->title = $_POST['title'];
@@ -70,12 +67,30 @@ class ArticleController extends Controller
 
             $this->outputer->setOutput(403, ['error' => 'Missing Parameters: you must specify title, body']);
         } catch (\Exception $e) {
-            $this->outputer->setOutput(404, ['error' => 'we could not find your article']);
+
+            $this->outputer->setOutput(404, ['error' => $e->getMessage()/*'we could not find your article'*/]);
         }
     }
 
-    public function delete()
+    public function delete($id)
     {
-        
+        $token = $this->checkAuth();
+
+        try {
+            $article = Article::where('id', $id)->where('user_id', $token['id'])->first();
+            if (!$article) {
+                throw new \Exception("article not found", 1);
+            }
+
+            if ($article->delete()) {
+                $this->outputer->setOutput(200, ['success' => 'article deleted.']);
+            }
+            $this->outputer->setOutput(430, ['error' => 'Error happend while deleting you article.']);
+
+            $this->outputer->setOutput(403, ['error' => 'Missing Parameters: you must specify title, body']);
+        } catch (\Exception $e) {
+
+            $this->outputer->setOutput(404, ['error' => $e->getMessage()/*'we could not find your article'*/]);
+        }
     }
 }
